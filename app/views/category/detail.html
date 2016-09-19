@@ -1,0 +1,18 @@
+<!DOCYPE html>
+<html>
+    <head>
+        
+         <title>create</title> 
+        
+    </head>
+     <%- include ../base/header.html %> 
+    <body>
+        <div>
+           <div>category id:<%= id %></div>
+            <div>category name:<%= name %></div>
+            <form action="/category/list" method="get"><input type="submit" value="list"></form>
+            <form action="/category" method="delete"><input type="submit" value="del"></form>
+        </div>
+    </body>
+      <%- include ../base/footer.html %> 
+</html>

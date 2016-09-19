@@ -12,18 +12,20 @@ import routes from './routes/routes.js';
  
 let app=koa();
 
+app.use(bodyParser());
+
+app.use(staticFileServer(__dirname+'/public'));
+
 render(app,{
     root: path.join(__dirname, 'views'),
     viewExt: 'html',
     layout: null,
     cache: false,
+    debug:true
 });
 
 routes(app);
 
-app.use(bodyParser());
-
-app.use(staticFileServer(__dirname+'/public'));
 
 app.use(logger());
 
