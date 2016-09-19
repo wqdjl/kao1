@@ -15,7 +15,7 @@ const routers=(app)=>{
     .get('/category/create',category.create_get)
     .post('/category/create',category.create_post)
     .get('/category/list',category.list)
-    
+    .get('/category/delete',category.del)
     ;
 };
 

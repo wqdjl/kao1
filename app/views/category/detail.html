@@ -10,8 +10,11 @@
         <div>
            <div>category id:<%= id %></div>
             <div>category name:<%= name %></div>
-            <form action="/category/list" method="get"><input type="submit" value="list"></form>
-            <form action="/category" method="delete"><input type="submit" value="del"></form>
+            <form action="/category/delete" method="delete">
+              <input type="hidden" value="<%= id %>" name='id'>
+              <input type="submit" value="del">
+            </form>
+           <a href="/category/list">list</a>
         </div>
     </body>
       <%- include ../base/footer.html %> 

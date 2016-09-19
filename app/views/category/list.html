@@ -7,12 +7,26 @@
     </head>
      <%- include ../base/header.html %> 
     <body>
+        <div><a href="/category/create">create</a></div>
         <div>
-            <ul> 
-              <% for(x in categories) {%>
-               <li>id:<%= categories[x ].id%> name:<%= categories[x ].name%></li>
-            <%}%>   
-            </ul>
+            <table> 
+               <thead> 
+                   <tr>
+                       <th>id</th>
+                        <th>name</th>
+                         <th></th>
+                   </tr>
+               </thead>
+              <tbody> 
+             <% for(x in categories) {%>
+               <tr>  
+                   <td> <%= categories[x].id%> </td> 
+                   <td> <%= categories[x].name%> </td> 
+                   <td> <a href="/category/<%= categories[x].id%>">detail</a> </td>
+               </tr>
+              <%}%>   
+              </tbody>
+            </tableul>
            
         </div>
     </body>

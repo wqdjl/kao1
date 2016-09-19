@@ -1,7 +1,7 @@
 import data from '../data/data.js'
 
 let _create_get=function *(next){
-    console.log('_create_get');
+     console.log('_create_get');
     yield next;
     yield this.render('category/create');
 };
@@ -18,15 +18,14 @@ let _create_post=function *(next){
 
 
 let _detail=function *(next){
-    console.log('_detail');
+      console.log('_detail');
     yield next;
     let id =this.params.id;
-    data.category=data.category||[];
-      
     let categoty=undefined;
-    
+   
+    data.category=data.category||[];
     data.category.forEach((item,index)=>{
-         console.log( item+','+index);
+        
            if ( item.id==id){
               categoty=item;
               return; 
@@ -41,16 +40,30 @@ let _detail=function *(next){
 };
 
 let _list=function *(next){
-    console.log('_list');
+     console.log('_list');
     yield next;
     data.category=data.category||[];
-   console.log( data.category);
     yield this.render('category/list',{categories:data.category});  
+};
+
+let _del=function *(next){
+    console.log('_del');
+     yield next;
+     let id=this.query.id; 
+ 
+     data.category=data.category||[];
+     data.category= data.category.filter(item=>{
+         console.log(item.id+","+id);
+         return item.id!=id;
+     });
+ 
+     this.redirect('/category/list');
 };
 
 export default {
     create_get:_create_get,
     create_post:_create_post,
     detail:_detail,
-    list:_list
+    list:_list,
+    del:_del
 }
