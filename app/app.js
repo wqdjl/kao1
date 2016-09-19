@@ -1,26 +1,32 @@
 import koa from  'koa';
 import logger from 'koa-logger';
 import onerror from 'koa-onerror';
+import render from 'koa-ejs';
 import staticFileServer from 'koa-static';
 import bodyParser from 'koa-bodyParser'; 
 
+import path from  'path';
 
+import routes from './routes/routes.js';
+
+ 
 let app=koa();
 
-// app.use(function *(next){
-//     yield next;
-//    //throw new Error(12313);
-//    //this.body='123'
-// });
+render(app,{
+    root: path.join(__dirname, 'views'),
+    viewExt: 'html',
+    layout: null,
+    cache: false,
+});
+
+routes(app);
+
 app.use(bodyParser());
 
 app.use(staticFileServer(__dirname+'/public'));
 
 app.use(logger());
 
-// app.on('error',(err,ctx)=>{
-//     console.log("error:"+err+'\r\nend');
-// });
 onerror(app);
 
 app.listen(3000);

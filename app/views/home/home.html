@@ -1,0 +1,17 @@
+<!DOCYPE html>
+<html>
+    <head>
+       <% if (!!title) {%> 
+           <title><%= title +'koa-learn' %></title> 
+           
+        <%} else {%>
+         <title><%= 'koa-learn' %></title> 
+         <% }%>
+    </head>
+     <%- include ../base/header.html %> 
+    <body>
+        <%= content %>
+      
+    </body>
+      <%- include ../base/footer.html %> 
+</html>
