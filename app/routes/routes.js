@@ -11,10 +11,10 @@ const routers=(app)=>{
 
     router
     .get('/',home)
-    .get('/category/:id',category.detail)
+    .get('/category/detail/:id',category.detail)
+    .get('/category/list',category.list)
     .get('/category/create',category.create_get)
     .post('/category/create',category.create_post)
-    .get('/category/list',category.list)
     .get('/category/delete',category.del)
     ;
 };

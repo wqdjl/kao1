@@ -6,10 +6,12 @@ import staticFileServer from 'koa-static';
 import bodyParser from 'koa-bodyParser'; 
 
 import path from  'path';
+import mongoose from 'mongoose';
 
 import routes from './routes/routes.js';
 
- 
+mongoose.connect('mongodb://localhost/blog');
+
 let app=koa();
 
 app.use(bodyParser());
