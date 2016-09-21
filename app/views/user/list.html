@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head><title>user-list</title></head>
+    <body>
+        <%- include ../base/header.html %>
+         <table>
+             <thead>
+                 <tr>
+                     <th>id</th>
+                     <th>name</th>
+                     <th>operate</th>
+                 </tr>
+            </thead>
+            <tbody> 
+                <% for(x in users){%>
+                <tr>
+                    <td><%= users[x].id %></td>
+                    <td><%= users[x].name %></td>
+                    <td><a onclick="deleteUser">delete</a></td>
+                </tr>
+               <% }%>    
+            </tbody>
+         </table>
+       
+        <%- include ../base/footer.html %> 
+    </body>
+</html>

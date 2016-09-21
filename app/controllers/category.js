@@ -12,18 +12,14 @@ let _create_post=function *(next){
     console.log('_create_post');
     yield next;
     let name=this.request.body.name;
-    let categories=yield Category.find().exec();
-    console.log(categories);
+    let categories=yield Category.find();
     let id=categories.length==0?1:(categories[categories.length-1]['id']+1);
     let category=new Category({
         id:id,
         name:name
     });
     yield category.save();
-    // data.category=data.category||[];
-    // let id=data.category.length+1;
-    // data.category.push({id:id,name:name}); 
-    this.redirect('/category/detail/'+id);//this.render('category/detail',{id:id,name:name});
+    this.redirect('/category/detail/'+id);
 };
 
 
@@ -31,17 +27,8 @@ let _detail=function *(next){
       console.log('_detail');
     yield next;
     let id =this.params.id;
-    let categoty=yield Category.findOne({id:id}).exec();
-   
-    // data.category=data.category||[];
-    // data.category.forEach((item,index)=>{
-        
-    //        if ( item.id==id){
-    //           categoty=item;
-    //           return; 
-    //        }  
-    //  });
-   
+    let categoty=yield Category.findOne({id:id});
+
     if (categoty) {
        yield this.render('category/detail',categoty);  
     }else{
@@ -52,8 +39,7 @@ let _detail=function *(next){
 let _list=function *(next){
      console.log('_list');
     yield next;
-    // data.category=data.category||[];
-    let categories=yield Category.find().exec();
+    let categories=yield Category.find();
     yield this.render('category/list',{categories:categories});  
 };
 
@@ -61,7 +47,7 @@ let _del=function *(next){
     console.log('_del');
      yield next;
      let id=this.query.id; 
-     yield Category.findOneAndRemove({id:id}).exec();
+     yield Category.findOneAndRemove({id:id});
      this.redirect('/category/list');
 };
 

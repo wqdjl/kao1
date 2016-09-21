@@ -1,0 +1,22 @@
+<!DCOTYPE html>
+<html>
+   <head><title>用户管理</title></head> 
+   <body>
+      <%- include ../base/header.html  %>
+        <nav>
+            <ul>
+                <li><a href="/user/create">Create</a></li>
+                <li><a href="/user/list">List</a></li>
+            </ul>
+        </nav>
+        <form action="/user" method="POST">
+            <input type="hidden" name="id" value="<%= user.id %>">
+            <div>name: <input type="text" value="<%= user.name %>" name="name"></div>
+            <div>birthday:   <input type="date" value="<%= user.birthday %>" name="birthday"></div>
+            <div>sex: <input type="checkbox" <%= user.sex %> name=sex ></div>
+            <div>pw: <input type="password" <%= user.password %> name="password"></div>
+            <input type="submit" value="submit">
+        </form>
+        <%- include('../base/footer.html') %>
+   </body>
+</html>
